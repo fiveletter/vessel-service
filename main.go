@@ -41,13 +41,13 @@ func (s *service) FindAvailable(ctx context.Context, req *pb.Specification, res 
 		return err
 	}
 
-	re.Vessel = vessel
+	res.Vessel = vessel
 	return nil
 }
 
 func main() {
 	vessels := []*pb.Vessel{
-		*pb.Vessel{Id: "vessel001", Name: "Boaty McBoatface", MaxWeight: 200000, Capacity: 500},
+		&pb.Vessel{Id: "vessel001", Name: "Boaty McBoatface", MaxWeight: 200000, Capacity: 500},
 	}
 	repo := &VesselRepository{vessels}
 	srv := micro.NewService(
